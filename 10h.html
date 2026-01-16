@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects</title>
+    <style>
+      body{
+        font-family: Arial;
+        background-color: black;
+      }
+      .calculation-grid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        column-gap: 10px;
+        row-gap: 10px;
+
+        width: 250px;
+      }
+
+      .number-button{
+        height: 60px;
+        width: 60px;
+        border: none;
+        background-color: rgb(51, 51, 51);
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        border-radius: 35px;
+        font-weight: bold;
+      }
+      .orange-button{
+        background-color: rgb(254, 159, 11);
+      }
+      .clear-button{
+        height: 60px;
+        width: 60px;
+        border: none;
+        background-color: rgb(51, 51, 51);
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 35px;
+      }
+      .pargraph-element{
+        font-size: 35px;
+        color: white;
+        margin-top: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+<body>
+  <p class="pargraph-element"></p>
+  <div class="calculation-grid">
+  <button onclick="
+  addingNumber('1');
+  " class="number-button">1</button>
+  <button onclick="
+  addingNumber('2');
+  " class="number-button">2</button>
+  <button onclick="
+  addingNumber('3');
+  " class="number-button">3</button>
+  <button onclick="
+  addingNumber(' + ');
+  "class="number-button orange-button">+</button>
+  <button onclick="
+  addingNumber('4');
+  " class="number-button">4</button>
+  <button onclick="
+  addingNumber('5');
+  "class="number-button">5</button>
+  <button onclick="
+  addingNumber('6');
+  "class="number-button">6</button>
+  <button onclick="
+  addingNumber(' - ');
+  "class="number-button orange-button">-</button>
+  <button onclick="
+  addingNumber('7');
+  "class="number-button">7</button>
+  <button onclick="
+  addingNumber('8');
+  "class="number-button">8</button>
+  <button onclick="
+  addingNumber('9');
+  "class="number-button">9</button>
+  <button onclick="
+  addingNumber(' * ');
+  "class="number-button orange-button">*</button>
+  <button onclick="
+  addingNumber('0');
+  "class="number-button">0</button>
+  <button onclick="
+  addingNumber('.');
+  "class="number-button">.</button>
+  <button onclick="
+  calculation = eval(calculation);
+  displayCalculation();
+  localStorage.setItem('calculation', calculation);
+  "class="number-button">=</button>
+  <button onclick="
+  addingNumber(' / ');
+  "class="number-button orange-button">/</button>
+  <button onclick="
+  clearEveryThing();
+  "class="clear-button">clear</button>
+  </div>
+
+    <script>
+
+
+      let calculation = localStorage.getItem('calculation') || '';
+      displayCalculation();
+      function addingNumber(value) {
+
+        calculation += value;
+        displayCalculation();
+
+        localStorage.setItem('calculation', calculation);
+      }
+        function displayCalculation() {
+
+        
+        const buttonElement = document.querySelector('.pargraph-element');
+
+        buttonElement.innerHTML = calculation;
+
+      }
+
+      function clearEveryThing() {
+        calculation = '';
+        displayCalculation();
+        localStorage.setItem('calculation', calculation)
+      }
+      
+    </script>
+</body>
+</html>
